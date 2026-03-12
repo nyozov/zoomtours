@@ -4,35 +4,17 @@ import { useState } from "react";
 import { Button, Dropdown, Label } from "@heroui/react";
 import { HiMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
+import { navigation } from "../lib/navigation";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navigation = [
-    { name: "Home", href: "/" },
-    {
-      name: "Our Tours",
-      href: "#",
-      dropdown: [
-        { name: "Day Tours", href: "/products/web" },
-        { name: "Niagara Falls Tours", href: "/products/mobile" },
-        { name: "Multi City Tours", href: "/products/desktop" },
-        { name: "Canadian Tours", href: "/products/desktop" },
-        { name: "USA Tours", href: "/products/desktop" },
-      ],
-    },
-    { name: "Blog", href: "/blog" },
-    { name: "About Us", href: "/about" },
-    { name: "Our Cities", href: "/cities" },
-    { name: "Reviews", href: "/reviews" },
-  ];
 
   return (
     <nav className="fixed top-10 left-0 right-0 z-50">
       {/* Dark gradient overlay for better text visibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-sm"></div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -55,8 +37,8 @@ export default function Navbar() {
                   <Dropdown>
                     <Button
                       aria-label={item.name}
-                      variant="light"
-                      className="font-medium text-white hover:text-white/90 [&]:text-white"
+                      variant="ghost"
+                    className="px-4 py-2 text-sm font-medium text-white hover:text-white/90 rounded-lg hover:bg-white/10 transition-colors"
                       style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
                     >
                       {item.name}
