@@ -13,7 +13,7 @@ export default function Navbar() {
     <nav className="fixed top-10 left-0 right-0 z-50">
       {/* Dark gradient overlay for better text visibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-sm"></div>
-      
+
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -38,14 +38,13 @@ export default function Navbar() {
                     <Button
                       aria-label={item.name}
                       variant="ghost"
-                    className="px-4 py-2 text-sm font-medium text-white hover:text-white/90 rounded-lg hover:bg-white/10 transition-colors"
-                      style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+                      className="px-4 py-2 text-sm font-medium text-white hover:text-white/90 rounded-lg hover:bg-white/10 transition-colors"
+                      style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
                     >
                       {item.name}
                     </Button>
                     <Dropdown.Popover>
-                      <Dropdown.Menu
-                      >
+                      <Dropdown.Menu>
                         {item.dropdown.map((subItem) => (
                           <Dropdown.Item
                             key={subItem.href}
@@ -62,7 +61,7 @@ export default function Navbar() {
                   <a
                     href={item.href}
                     className="px-4 py-2 text-sm font-medium text-white hover:text-white/90 rounded-lg hover:bg-white/10 transition-colors"
-                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+                    style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
                   >
                     {item.name}
                   </a>
@@ -73,15 +72,13 @@ export default function Navbar() {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button 
-              variant="primary"
-              className="shadow-lg"
-            >
+            <Button variant="primary" className="shadow-lg">
               Book Now
             </Button>
-            <Button 
+            <Button
               className="text-white border-white hover:bg-white/10 shadow-lg"
-              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+              variant="ghost"
+              style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
             >
               Contact Us
             </Button>
@@ -92,7 +89,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
-              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+              style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
             >
               {mobileMenuOpen ? (
                 <HiX className="w-6 h-6" />
@@ -106,7 +103,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
+        <div className="md:hidden backdrop-blur-md">
           <div className="px-4 py-4 space-y-2">
             {navigation.map((item) => (
               <div key={item.name}>
@@ -114,13 +111,13 @@ export default function Navbar() {
                   <Dropdown>
                     <Button
                       aria-label={item.name}
-                      className="w-full justify-start font-medium text-white"
+                      variant="ghost"
+                    className="block px-4 py-2 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                     >
                       {item.name}
                     </Button>
                     <Dropdown.Popover>
-                      <Dropdown.Menu
-                      >
+                      <Dropdown.Menu>
                         {item.dropdown.map((subItem) => (
                           <Dropdown.Item
                             key={subItem.href}
@@ -148,7 +145,8 @@ export default function Navbar() {
               <Button variant="primary" className="w-full font-medium">
                 Book Now
               </Button>
-              <Button 
+              <Button
+                variant="ghost"
                 className="w-full font-medium text-white border-white hover:bg-white/10"
               >
                 Contact Us
