@@ -30,44 +30,6 @@ export default function Footer() {
               experiences with trusted guides, reliable logistics, and careful
               planning across Canada and the U.S.
             </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <FaFacebookF className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <FaInstagram className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <FaTwitter className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <FaTiktok className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <FaYoutube className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <FaLinkedinIn className="h-4 w-4" />
-              </a>
-            </div>
           </div>
 
           <div className="space-y-3">
@@ -105,14 +67,58 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            
+            <div className='w-full flex items-center justify-center'>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                Follow Us
+              </h3>
+            </div>
+            <div className=" flex items-center justify-center flex-col justify-center">
+              <div className="flex items-center gap-3 mb-4">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FaFacebookF className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FaInstagram className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FaTwitter className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FaTiktok className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FaYoutube className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FaLinkedinIn className="h-4 w-4" />
+                </a>
+              </div>
+
               <Image
                 src="/safe_travels_partner.webp"
                 alt="Safe Travels Partner"
                 width={90}
                 height={60}
               />
-              
+            </div>
           </div>
         </div>
 

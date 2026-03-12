@@ -1,6 +1,7 @@
 import LandingVideo from "./components/LandingVideo";
 import Reviews from "./components/Reviews";
 import TourCards from "./components/TourCards";
+import ValuesSection from "./components/ValuesSection";
 export default function Home() {
   return (
     <div className="bg-white">
@@ -35,6 +36,7 @@ export default function Home() {
         </section>
         <TourCards />
         <Reviews />
+        <ValuesSection />
       </main>
     </div>
   );

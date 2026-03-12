@@ -45,7 +45,6 @@ export default function Navbar() {
                     </Button>
                     <Dropdown.Popover>
                       <Dropdown.Menu
-                        onAction={(key) => (window.location.href = key)}
                       >
                         {item.dropdown.map((subItem) => (
                           <Dropdown.Item
@@ -81,7 +80,6 @@ export default function Navbar() {
               Book Now
             </Button>
             <Button 
-              variant="bordered"
               className="text-white border-white hover:bg-white/10 shadow-lg"
               style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
             >
@@ -116,14 +114,12 @@ export default function Navbar() {
                   <Dropdown>
                     <Button
                       aria-label={item.name}
-                      variant="light"
                       className="w-full justify-start font-medium text-white"
                     >
                       {item.name}
                     </Button>
                     <Dropdown.Popover>
                       <Dropdown.Menu
-                        onAction={(key) => (window.location.href = key)}
                       >
                         {item.dropdown.map((subItem) => (
                           <Dropdown.Item
@@ -153,7 +149,6 @@ export default function Navbar() {
                 Book Now
               </Button>
               <Button 
-                variant="bordered"
                 className="w-full font-medium text-white border-white hover:bg-white/10"
               >
                 Contact Us
