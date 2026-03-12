@@ -1,75 +1,87 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@heroui/react';
-import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi';
+import { useState } from "react";
+import { Button, Dropdown, Label } from "@heroui/react";
+import { HiMenu, HiX } from "react-icons/hi";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { 
-      name: 'Products', 
-      href: '#',
+    { name: "Home", href: "/" },
+    {
+      name: "Our Tours",
+      href: "#",
       dropdown: [
-        { name: 'Web Apps', href: '/products/web' },
-        { name: 'Mobile Apps', href: '/products/mobile' },
-        { name: 'Desktop Apps', href: '/products/desktop' },
-      ]
+        { name: "Day Tours", href: "/products/web" },
+        { name: "Niagara Falls Tours", href: "/products/mobile" },
+        { name: "Multi City Tours", href: "/products/desktop" },
+        { name: "Canadian Tours", href: "/products/desktop" },
+        { name: "USA Tours", href: "/products/desktop" },
+      ],
     },
-    { name: 'Pricing', href: '/pricing' },
-    { name: 'Docs', href: '/docs' },
-    { name: 'About', href: '/about' },
+    { name: "Blog", href: "/blog" },
+    { name: "About Us", href: "/about" },
+    { name: "Our Cities", href: "/cities" },
+    { name: "Reviews", href: "/reviews" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Dark gradient overlay for better text visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-sm"></div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">H</span>
-              </div>
-              <span className="text-xl font-semibold text-gray-900">HeroUI</span>
+              <Image
+                src="/zoomtours_logo.webp"
+                alt="Logo"
+                width={100}
+                height={50}
+                className="drop-shadow-lg"
+              />
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => (
-              <div key={item.name} className="relative">
+              <div key={item.name}>
                 {item.dropdown ? (
-                  <div className="relative">
-                    <button
-                      onClick={() => setProductsOpen(!productsOpen)}
-                      className="flex items-center space-x-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
+                  <Dropdown>
+                    <Button
+                      aria-label={item.name}
+                      variant="light"
+                      className="font-medium text-white hover:text-white/90 [&]:text-white"
+                      style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
                     >
-                      <span>{item.name}</span>
-                      <HiChevronDown className={`w-4 h-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    
-                    {productsOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                      {item.name}
+                    </Button>
+                    <Dropdown.Popover>
+                      <Dropdown.Menu
+                        onAction={(key) => (window.location.href = key)}
+                      >
                         {item.dropdown.map((subItem) => (
-                          <a
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                          <Dropdown.Item
+                            key={subItem.href}
+                            id={subItem.href}
+                            textValue={subItem.name}
                           >
-                            {subItem.name}
-                          </a>
+                            <Label>{subItem.name}</Label>
+                          </Dropdown.Item>
                         ))}
-                      </div>
-                    )}
-                  </div>
+                      </Dropdown.Menu>
+                    </Dropdown.Popover>
+                  </Dropdown>
                 ) : (
                   <a
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="px-4 py-2 text-sm font-medium text-white hover:text-white/90 rounded-lg hover:bg-white/10 transition-colors"
+                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
                   >
                     {item.name}
                   </a>
@@ -81,16 +93,17 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3">
             <Button 
-              variant="light" 
-              className="font-medium"
+              variant="primary"
+              className="shadow-lg"
             >
-              Sign In
+              Book Now
             </Button>
             <Button 
-              color="primary"
-              className="font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+              variant="bordered"
+              className="text-white border-white hover:bg-white/10 shadow-lg"
+              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
             >
-              Get Started
+              Contact Us
             </Button>
           </div>
 
@@ -98,7 +111,8 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
             >
               {mobileMenuOpen ? (
                 <HiX className="w-6 h-6" />
@@ -112,56 +126,55 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
           <div className="px-4 py-4 space-y-2">
             {navigation.map((item) => (
               <div key={item.name}>
                 {item.dropdown ? (
-                  <div>
-                    <button
-                      onClick={() => setProductsOpen(!productsOpen)}
-                      className="flex items-center justify-between w-full px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                  <Dropdown>
+                    <Button
+                      aria-label={item.name}
+                      variant="light"
+                      className="w-full justify-start font-medium text-white"
                     >
-                      <span>{item.name}</span>
-                      <HiChevronDown className={`w-4 h-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    {productsOpen && (
-                      <div className="mt-2 ml-4 space-y-2">
+                      {item.name}
+                    </Button>
+                    <Dropdown.Popover>
+                      <Dropdown.Menu
+                        onAction={(key) => (window.location.href = key)}
+                      >
                         {item.dropdown.map((subItem) => (
-                          <a
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                          <Dropdown.Item
+                            key={subItem.href}
+                            id={subItem.href}
+                            textValue={subItem.name}
                           >
-                            {subItem.name}
-                          </a>
+                            <Label>{subItem.name}</Label>
+                          </Dropdown.Item>
                         ))}
-                      </div>
-                    )}
-                  </div>
+                      </Dropdown.Menu>
+                    </Dropdown.Popover>
+                  </Dropdown>
                 ) : (
                   <a
                     href={item.href}
-                    className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                    className="block px-4 py-2 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                   >
                     {item.name}
                   </a>
                 )}
               </div>
             ))}
-            
+
             <div className="pt-4 space-y-2">
-              <Button 
-                variant="light" 
-                className="w-full font-medium"
-              >
-                Sign In
+              <Button variant="primary" className="w-full font-medium">
+                Book Now
               </Button>
               <Button 
-                color="primary"
-                className="w-full font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                variant="bordered"
+                className="w-full font-medium text-white border-white hover:bg-white/10"
               >
-                Get Started
+                Contact Us
               </Button>
             </div>
           </div>
